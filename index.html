@@ -26,7 +26,7 @@
             <input type="number" name="Crianças" placeholder="Crianças" id="quant.crianças" class="texto">
             <h2>Duração do Churrasco</h2>
             <input type="number" name="Duração em hora (h)" placeholder="Duração em horas (h)" id="quant.horas" class="texto">
-            <button onclick="calcular()" id="botao-calcular">Calcular</button>
+            <button onclick="calcular()"  onmousemove="mover()" onmouseout="sair()" id="botao-calcular">Calcular</button>
         </div>
             <div id="resultados">
                 <h2 id="titulo-resultado"></h2>
@@ -47,12 +47,22 @@
     // Carne - 400 g por pessoa + 6 horas - 650g
     // Cerveja 1200 ml por pessoa + 6 horas - 2000ml
     // Refrigerante / Água - 1000 ml por pessoa + 6 horas - 1500 ml
-    
+   
+    var  botao = document.getElementById("botao-calcular")
+    function sair(){
+        botao.style.backgroundColor="rgba(0, 0, 0, 0.31)"
+    }
+    function mover(){
+        botao.style.backgroundColor="rgba(0, 0, 0, 0.568)"
+    }
+
     function calcular(){
         let qadulto = document.getElementById("quant.adulto").value
         let qcrianças = document.getElementById("quant.crianças").value
         let qhoras = document.getElementById("quant.horas").value
         let titulo2 = document.getElementById("titulo-resultado")
+        
+        
         if (qhoras<6){
             let calculo_carne = (qadulto*400 + (qcrianças*400)/2)/1000
             let calculo_cerveja = (qadulto*1200)/1000
