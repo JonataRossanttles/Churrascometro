@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Imagens/chopp.jpg" type="image/x-icon">
+    <title>Churrascômetro</title>
+</head>
+
+<body>
+<div id="container-mae">
+        <div id="texto-geral">
+            <span>Saiba quanta comida e bebida irá gastar em seu churrasco!</span> 
+        </div>
+        
+        
+    <div class="container">
+        <div class="conteudo-container">
+            <img src="Imagens/banner-churrascometro-v3.png" alt="Foto do Churrascômetro" class="imagem-churrascometro">
+    
+            <h2>Quantidade de Adultos</h2>
+            <input type="number" name="Adultos" placeholder="Adultos"  id="quant.adulto" class="texto">
+            <h2>Quantidade de Crianças</h2>
+            <input type="number" name="Crianças" placeholder="Crianças" id="quant.crianças" class="texto">
+            <h2>Duração do Churrasco</h2>
+            <input type="number" name="Duração em hora (h)" placeholder="Duração em horas (h)" id="quant.horas" class="texto">
+            <button onclick="calcular()" id="botao-calcular">Calcular</button>
+        </div>
+            <div id="resultados">
+                <h2 id="titulo-resultado"></h2>
+                <p id="carne" class="paragrafos-quantidade"></p>
+                <p id="cerveja" class="paragrafos-quantidade"></p>
+                <p id="bebida" class="paragrafos-quantidade"></p>
+            </div>
+    
+        
+        
+    </div>
+</div>
+   
+
+
+</body>
+<script>
+    // Carne - 400 g por pessoa + 6 horas - 650g
+    // Cerveja 1200 ml por pessoa + 6 horas - 2000ml
+    // Refrigerante / Água - 1000 ml por pessoa + 6 horas - 1500 ml
+    
+    function calcular(){
+        let qadulto = document.getElementById("quant.adulto").value
+        let qcrianças = document.getElementById("quant.crianças").value
+        let qhoras = document.getElementById("quant.horas").value
+        let titulo2 = document.getElementById("titulo-resultado")
+        if (qhoras<6){
+            let calculo_carne = (qadulto*400 + (qcrianças*400)/2)/1000
+            let calculo_cerveja = (qadulto*1200)/1000
+            let calculo_bebida = (qadulto*1000 + (qcrianças*1000)/2)/1000
+            let paragrafo_carne = document.getElementById("carne")
+            let paragrafo_cerveja = document.getElementById("cerveja")
+            let paragrafo_bebida = document.getElementById("bebida")
+            titulo2.innerHTML = "Você precisará de:"
+            paragrafo_carne.innerText = calculo_carne + " Kg de Carne"
+            paragrafo_cerveja.innerText = calculo_cerveja + " Litros de Cerveja"
+            paragrafo_bebida.innerText = calculo_bebida + " Litros de Bebida"
+        
+            console.log(calculo_carne + " Gramas de Carne "+ calculo_cerveja +" ml de cerveja "+ calculo_bebida +" ml de Bebida.")
+        }else{
+            let calculo_carne2 = (qadulto*650 + (qcrianças*650)/2)/1000
+            let calculo_cerveja2 = (qadulto*2000)/1000
+            let calculo_bebida2 = (qadulto*1500 + (qcrianças*1500)/2)/1000
+            let paragrafo_carne = document.getElementById("carne")
+            let paragrafo_cerveja = document.getElementById("cerveja")
+            let paragrafo_bebida = document.getElementById("bebida")
+            titulo2.innerHTML = "Você precisará de:"
+            paragrafo_carne.innerText = calculo_carne2 + " Kg de Carne"
+            paragrafo_cerveja.innerText = calculo_cerveja2 + " Litros de Cerveja"
+            paragrafo_bebida.innerText = calculo_bebida2 + " Litros de Bebida"
+            console.log(calculo_carne2 + " Gramas de Carne "+ calculo_cerveja2 +" ml de cerveja "+ calculo_bebida2 +" ml de Bebida.")
+        }
+        
+        
+    
+    }
+    
+   
+    
+    
+    
+    
+    </script>
+</html>
